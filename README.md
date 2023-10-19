@@ -46,6 +46,52 @@ from sklearn.model_selection import train_test_split
 df=pd.read_csv('Churn_Modelling data.csv')
 df
 ```
+```
+#drop unwanted columns
+df.drop('RowNumber',axis=1,inplace=True)
+df.drop('CustomerId',axis=1,inplace=True)
+df.drop('Surname',axis=1,inplace=True)
+df.drop('Geography',axis=1,inplace=True)
+df.drop('Age',axis=1,inplace=True)
+df.drop('Gender',axis=1,inplace=True)
+```
+```
+#checking for null, duplicates, outliers in lasrt column
+df.isnull().sum()
+
+df.duplicated()
+
+df['Exited'].describe()
+```
+
+```
+#normalising data to normal distribution
+sc=MinMaxScaler()
+df2=pd.DataFrame(sc.fit_transform(df),columns=['CreditScore','Tenure','Balance','NumOfProducts','HasCrCard','IsActiveMember','EstimatedSalary','Exited'])
+df2
+```
+```
+#split dataset
+x=df2.iloc[:,:-1].values #all rows from all except last column
+x
+y=df2.iloc[:,-1].values #all rows from only last column
+y
+
+```
+
+```
+##creating training and test data
+X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.2)
+print(X_train)
+print("Size of X_train: ",len(X_train))
+```
+
+```
+print(X_test)
+print("Size of X_test: ",len(X_test))
+```
+
+
 
 
 
@@ -53,7 +99,42 @@ df
 
 
 ## OUTPUT:
-/ Show the result/
 
-## RESULT
-/Type your result here/
+## Dataset and Its Properties
+
+
+![image](https://github.com/SubashiniSenniappan/Ex.No.1---Data-Preprocessing/assets/119404951/f163eedb-c9ed-4a82-8004-af9c5f84b86b)
+
+![image](https://github.com/SubashiniSenniappan/Ex.No.1---Data-Preprocessing/assets/119404951/50f49a92-d702-460e-bf77-b4456038f64e)
+
+
+![image](https://github.com/SubashiniSenniappan/Ex.No.1---Data-Preprocessing/assets/119404951/23df9182-c2b4-4700-ac1c-0a3261a76481):
+
+
+## Normalised Dataset:
+
+![image](https://github.com/SubashiniSenniappan/Ex.No.1---Data-Preprocessing/assets/119404951/11d1a7b5-9bad-4627-b54e-8c0c9b66e4d8)
+
+
+## X and Y data column:
+
+![image](https://github.com/SubashiniSenniappan/Ex.No.1---Data-Preprocessing/assets/119404951/1fe1d65a-7478-4830-859b-94644ac37df6)
+
+![image](https://github.com/SubashiniSenniappan/Ex.No.1---Data-Preprocessing/assets/119404951/ab6d6f92-dad1-4fd8-9c25-6880269b04c8)
+
+## Training data:
+
+
+![image](https://github.com/SubashiniSenniappan/Ex.No.1---Data-Preprocessing/assets/119404951/cfc9ee23-a22f-4653-a495-f0222590c52a)
+
+## Test data:
+
+![image](https://github.com/SubashiniSenniappan/Ex.No.1---Data-Preprocessing/assets/119404951/e3d8d045-d8ed-49d3-a4d3-7b7119304d22)
+
+
+
+
+
+## RESULT:
+Thus, the Data preprocessing is performed over a data set successfully.
+

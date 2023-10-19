@@ -34,6 +34,10 @@ Splitting the data into test and train
 ```
 
 ## PROGRAM:
+
+```
+Developed by :Subashini
+Register no. :212222240106
 ```
 import pandas as pd
 import io
